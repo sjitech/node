@@ -43,6 +43,10 @@ The output of this option is less detailed than this document.
 ### `-e`, `--eval "script"`
 <!-- YAML
 added: v0.5.2
+changes:
+  - version: v5.11.0
+    pr-url: https://github.com/nodejs/node/pull/5348
+    description: Built-in libraries are now available as predefined variables.
 -->
 
 Evaluate the following argument as JavaScript. The modules which are
@@ -52,6 +56,10 @@ predefined in the REPL can also be used in `script`.
 ### `-p`, `--print "script"`
 <!-- YAML
 added: v0.6.4
+changes:
+  - version: v5.11.0
+    pr-url: https://github.com/nodejs/node/pull/5348
+    description: Built-in libraries are now available as predefined variables.
 -->
 
 Identical to `-e` but prints the result.
@@ -59,7 +67,9 @@ Identical to `-e` but prints the result.
 
 ### `-c`, `--check`
 <!-- YAML
-added: v5.0.0
+added:
+  - v5.0.0
+  - v4.2.0
 -->
 
 Syntax check the script without executing.
@@ -387,7 +397,22 @@ misformatted, but any errors are otherwise ignored.
 Note that neither the well known nor extra certificates are used when the `ca`
 options property is explicitly specified for a TLS or HTTPS client or server.
 
+### `OPENSSL_CONF=file`
+<!-- YAML
+added: REPLACEME
+-->
+
+Load an OpenSSL configuration file on startup. Among other uses, this can be
+used to enable FIPS-compliant crypto if Node.js is built with `./configure
+\-\-openssl\-fips`.
+
+If the [`--openssl-config`][] command line option is used, the environment
+variable is ignored.
+
 ### `SSL_CERT_DIR=dir`
+<!-- YAML
+added: REPLACEME
+-->
 
 If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory
 containing trusted certificates.
@@ -397,6 +422,9 @@ evironment variable will be inherited by any child processes, and if they use
 OpenSSL, it may cause them to trust the same CAs as node.
 
 ### `SSL_CERT_FILE=file`
+<!-- YAML
+added: REPLACEME
+-->
 
 If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file
 containing trusted certificates.
@@ -421,3 +449,4 @@ equivalent to using the `--redirect-warnings=file` command-line flag.
 [debugger]: debugger.html
 [REPL]: repl.html
 [SlowBuffer]: buffer.html#buffer_class_slowbuffer
+[`--openssl-config`]: #cli_openssl_config_file

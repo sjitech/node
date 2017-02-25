@@ -85,6 +85,9 @@ Create a branch and start hacking:
 $ git checkout -b my-branch -t origin/master
 ```
 
+Any text you write should follow the [Style Guide](doc/STYLE_GUIDE.md),
+including comments and API documentation.
+
 ### Step 3: Commit
 
 Make sure git knows your name and email address:
@@ -182,7 +185,9 @@ Running `make test`/`vcbuild test` will run the linter as well unless one or
 more tests fail.
 
 If you want to run the linter without running tests, use
-`make lint`/`vcbuild lint`.
+`make lint`/`vcbuild jslint`. At this time, only JavaScript linting is
+available on Windows. `make lint` on POSIX will run both JavaScript linting and
+C++ linting.
 
 If you are updating tests and just want to run a single test to check it, you
 can use this syntax to run it exactly as the test harness would:

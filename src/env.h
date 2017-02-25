@@ -82,6 +82,7 @@ namespace node {
   V(oncertcb_string, "oncertcb")                                              \
   V(onclose_string, "_onclose")                                               \
   V(code_string, "code")                                                      \
+  V(configurable_string, "configurable")                                      \
   V(cwd_string, "cwd")                                                        \
   V(dest_string, "dest")                                                      \
   V(detached_string, "detached")                                              \
@@ -89,6 +90,7 @@ namespace node {
   V(domain_string, "domain")                                                  \
   V(emitting_top_level_domain_error_string, "_emittingTopLevelDomainError")   \
   V(exchange_string, "exchange")                                              \
+  V(enumerable_string, "enumerable")                                          \
   V(idle_string, "idle")                                                      \
   V(irq_string, "irq")                                                        \
   V(encoding_string, "encoding")                                              \
@@ -104,7 +106,6 @@ namespace node {
   V(exponent_string, "exponent")                                              \
   V(exports_string, "exports")                                                \
   V(ext_key_usage_string, "ext_key_usage")                                    \
-  V(external_string, "external")                                              \
   V(external_stream_string, "_externalStream")                                \
   V(family_string, "family")                                                  \
   V(fatal_exception_string, "_fatalException")                                \
@@ -112,10 +113,9 @@ namespace node {
   V(file_string, "file")                                                      \
   V(fingerprint_string, "fingerprint")                                        \
   V(flags_string, "flags")                                                    \
+  V(get_string, "get")                                                        \
   V(gid_string, "gid")                                                        \
   V(handle_string, "handle")                                                  \
-  V(heap_total_string, "heapTotal")                                           \
-  V(heap_used_string, "heapUsed")                                             \
   V(homedir_string, "homedir")                                                \
   V(hostmaster_string, "hostmaster")                                          \
   V(ignore_string, "ignore")                                                  \
@@ -183,7 +183,6 @@ namespace node {
   V(rename_string, "rename")                                                  \
   V(replacement_string, "replacement")                                        \
   V(retry_string, "retry")                                                    \
-  V(rss_string, "rss")                                                        \
   V(serial_string, "serial")                                                  \
   V(scopeid_string, "scopeid")                                                \
   V(sent_shutdown_string, "sentShutdown")                                     \
@@ -191,6 +190,7 @@ namespace node {
   V(service_string, "service")                                                \
   V(servername_string, "servername")                                          \
   V(session_id_string, "sessionId")                                           \
+  V(set_string, "set")                                                        \
   V(shell_string, "shell")                                                    \
   V(signal_string, "signal")                                                  \
   V(size_string, "size")                                                      \
@@ -217,6 +217,7 @@ namespace node {
   V(username_string, "username")                                              \
   V(valid_from_string, "valid_from")                                          \
   V(valid_to_string, "valid_to")                                              \
+  V(value_string, "value")                                                    \
   V(verify_error_string, "verifyError")                                       \
   V(version_string, "version")                                                \
   V(weight_string, "weight")                                                  \

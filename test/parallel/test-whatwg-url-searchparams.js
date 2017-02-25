@@ -21,6 +21,10 @@ assert(sp.has('a'));
 assert.strictEqual(sp.get('a'), '[object Object]');
 sp.delete('a');
 assert(!sp.has('a'));
+
+m.search = '';
+assert.strictEqual(sp.toString(), '');
+
 values.forEach((i) => sp.append('a', i));
 assert(sp.has('a'));
 assert.strictEqual(sp.getAll('a').length, 6);
@@ -32,7 +36,8 @@ assert.strictEqual(m.search, `?${serialized}`);
 
 assert.strictEqual(sp[Symbol.iterator], sp.entries);
 
-let key, val, n = 0;
+let key, val;
+let n = 0;
 for ([key, val] of sp) {
   assert.strictEqual(key, 'a');
   assert.strictEqual(val, String(values[n++]));

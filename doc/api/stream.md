@@ -347,6 +347,8 @@ buffer that would have an adverse impact on performance. In such situations,
 implementations that implement the `writable._writev()` method can perform
 buffered writes in a more optimized manner.
 
+See also: [`writable.uncork()`][].
+
 ##### writable.end([chunk][, encoding][, callback])
 <!-- YAML
 added: v0.9.4
@@ -378,6 +380,10 @@ file.end('world!');
 ##### writable.setDefaultEncoding(encoding)
 <!-- YAML
 added: v0.11.15
+changes:
+  - version: v6.1.0
+    pr-url: https://github.com/nodejs/node/pull/5040
+    description: This method now returns a reference to `writable`.
 -->
 
 * `encoding` {String} The new default encoding
@@ -394,7 +400,7 @@ added: v0.11.2
 The `writable.uncork()` method flushes all data buffered since
 [`stream.cork()`][] was called.
 
-When using `writable.cork()` and `writable.uncork()` to manage the buffering
+When using [`writable.cork()`][] and `writable.uncork()` to manage the buffering
 of writes to a stream, it is recommended that calls to `writable.uncork()` be
 deferred using `process.nextTick()`. Doing so allows batching of all
 `writable.write()` calls that occur within a given Node.js event loop phase.
@@ -406,7 +412,7 @@ stream.write('data ');
 process.nextTick(() => stream.uncork());
 ```
 
-If the `writable.cork()` method is called multiple times on a stream, the same
+If the [`writable.cork()`][] method is called multiple times on a stream, the same
 number of calls to `writable.uncork()` must be called to flush the buffered
 data.
 
@@ -422,9 +428,16 @@ process.nextTick(() => {
 });
 ```
 
+See also: [`writable.cork()`][].
+
 ##### writable.write(chunk[, encoding][, callback])
 <!-- YAML
 added: v0.9.4
+changes:
+  - version: v6.0.0
+    pr-url: https://github.com/nodejs/node/pull/6170
+    description: Passing `null` as the `chunk` parameter will always be
+                 considered invalid now, even in object mode.
 -->
 
 * `chunk` {String|Buffer} The data to write
@@ -1065,6 +1078,11 @@ myReader.on('readable', () => {
 #### Class: stream.Duplex
 <!-- YAML
 added: v0.9.4
+changes:
+  - version: v6.8.0
+    pr-url: https://github.com/nodejs/node/pull/8834
+    description: Instances of `Duplex` now return `true` when
+                 checking `instanceof stream.Writable`.
 -->
 
 <!--type=class-->
@@ -1186,6 +1204,9 @@ the [API for Stream Consumers][] section). Doing so may lead to adverse
 side effects in application code consuming the stream.
 
 ### Simplified Construction
+<!-- YAML
+added: v1.2.0
+-->
 
 For many simple cases, it is possible to construct a stream without relying on
 inheritance. This can be accomplished by directly creating instances of the
@@ -2018,6 +2039,8 @@ readable buffer so there is nothing for a user to consume.
 [`stream.uncork()`]: #stream_writable_uncork
 [`stream.unpipe()`]: #stream_readable_unpipe_destination
 [`stream.wrap()`]: #stream_readable_wrap_stream
+[`writable.cork()`]: #stream_writable_cork
+[`writable.uncork()`]: #stream_writable_uncork
 [API for Stream Consumers]: #stream_api_for_stream_consumers
 [API for Stream Implementers]: #stream_api_for_stream_implementers
 [child process stdin]: child_process.html#child_process_child_stdin
